@@ -7,7 +7,7 @@
 void readmenuitem(char *menuitem);
 int main() {
     int nofood;
-    printf("Please input number of food types: \n>");
+    printf("Please input number of food types: \n");
     scanf("%d", &nofood);
     char** food=(char**)malloc(nofood * sizeof(char*));
     printf("Please input food types (each on a new line, may contain spaces):\n");
