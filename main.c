@@ -54,7 +54,7 @@ int main() {
         getchar();//reads the ')' after the number
         getchar();
     }
-    fprintf(datafile, "%d\n", nofood);
+    fprintf(datafile, "%d:\n", nofood);
     for(int i=0;i<nofood;i++)
     {
         fprintf(datafile, "%s: ", food[i]);
@@ -64,7 +64,7 @@ int main() {
         }
         fprintf(datafile, "\n");
     }
-    fprintf(datafile, "%d\n", nodrink);
+    fprintf(datafile, "%d:\n", nodrink);
     for(int i=0;i<nodrink;i++)
     {
         fprintf(datafile, "(%s - %.2f)", drink[i], drinkprice[i]);
