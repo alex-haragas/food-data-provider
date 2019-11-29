@@ -57,7 +57,7 @@ int main() {
     fprintf(datafile, "%d:\n", nofood);
     for(int i=0;i<nofood;i++)
     {
-        fprintf(datafile, "%s: ", food[i]);
+        fprintf(datafile, "%s %d: ", food[i],nospecificfood[i]);
         for(int j=0;j<nospecificfood[i];j++)
         {
             fprintf(datafile, " (%s - %.2f)", specificfood[i][j], foodprice[i][j]);
