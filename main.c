@@ -4,8 +4,11 @@
 #define MAX_FOOD_NAME 100
 #define MAX_SPECIFIC_FOOD_NAME 100
 #define MAX_DRINK_NAME 100
+
 void readmenuitem(char *menuitem);
 int main() {
+    FILE * datafile;
+    datafile=fopen("D:\\CP\\food-data-provider\\data.txt", "w");//for some reason it didn't write until I put the entire path
     int nofood;
     printf("Please input number of food types: \n");
     scanf("%d", &nofood);
@@ -51,29 +54,22 @@ int main() {
         getchar();//reads the ')' after the number
         getchar();
     }
-    printf("The food data is:");
+    fprintf(datafile, "%d:\n", nofood);
     for(int i=0;i<nofood;i++)
     {
-        printf("%s:",food[i]);
+        fprintf(datafile, "%s %d: ", food[i],nospecificfood[i]);
         for(int j=0;j<nospecificfood[i];j++)
         {
-            printf(" (%s - %.2f)",specificfood[i][j],foodprice[i][j]);
+            fprintf(datafile, " (%s - %.2f)", specificfood[i][j], foodprice[i][j]);
         }
-        printf("\n");
+        fprintf(datafile, "\n");
     }
-    printf("The drinks data is:\ndrinks: ");
+    fprintf(datafile, "%d:\n", nodrink);
     for(int i=0;i<nodrink;i++)
     {
-        printf("%s",drink[i]);
+        fprintf(datafile, "(%s - %.2f)", drink[i], drinkprice[i]);
         if(i!=nodrink-1)
-            printf(", ");
-    }
-    printf("\nprice: ");
-    for(int i=0;i<nodrink;i++)
-    {
-        printf("%.2f",drinkprice[i]);
-        if(i!=nodrink-1)
-            printf(", ");
+            fprintf(datafile, ", ");
     }
     for(int i=0;i<nodrink;i++)
         free(drink[i]);
@@ -88,6 +84,7 @@ int main() {
         free(food[i]);
     }
     free(food);
+    fclose(datafile);
     return 0;
 }
 void readmenuitem(char * menuitem) {
